@@ -1,0 +1,5 @@
+""""
+Init
+"""
+
+print "hello world"
