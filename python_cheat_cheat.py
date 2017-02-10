@@ -2,6 +2,14 @@
 Header
 """
 
+# important modules
+import dis      # disassembler of python bytecode
+import sys      # functions and objects that interact closely with the interpreter
+
+# remove unused modules warning
+sys
+dis
+
 """
     Interpreter
 
@@ -11,6 +19,9 @@ Header
 bytecode = compile('x=2\nprint "X is", x',"fake_module", "exec")
 # this is the bytecode representation
 print [ord(byte) for byte in bytecode.co_code]
+
+# show bytecode instructions
+print dis.dis(bytecode)
 
 """
     Interpreter
@@ -26,8 +37,29 @@ print eval(bytecode)
         + Python VM is a stack machine
         + Garbage collection is done by reference counting
         + Variables aren't really added to the stack, just a reference
+
+        ceval.c is the main loop of the interpreter. Line ~980 contains the infinite loop for(;;) which gives us the
+        REPL and Line 1112 is the giant switch statement for what to do on each opcode
+
+
+        Everything in python is a PyObject. It is the main data structure for the language. All objects contain:
+            -Type
+            -Id
+            -Value
+            -Refcount
 '''
 
+'''
+    Standard Library
+
+        Quick tour =>
+            https://docs.python.org/2/tutorial/stdlib.html
+            https://docs.python.org/2/tutorial/stdlib2.html
+'''
+
+# without arguments, dir prints out all the variables in the current scope. This means that it will print all
+# the varaibles and imported modules
+names_in_current_scope = dir()
 
 '''
     Functions
@@ -47,3 +79,6 @@ def my_func(x):
 print dir(my_func)
 
 
+"""
+    Functional Programming
+"""
