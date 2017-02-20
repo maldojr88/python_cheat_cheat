@@ -11,6 +11,15 @@ sys
 dis
 
 """
+    Constants
+"""
+True
+False
+None
+__debug__
+Ellipsis
+
+"""
     Interpreter
 
         sourcecode => python bytecode
@@ -58,7 +67,7 @@ print eval(bytecode)
 '''
 
 # without arguments, dir prints out all the variables in the current scope. This means that it will print all
-# the varaibles and imported modules
+# the variables and imported modules
 names_in_current_scope = dir()
 
 '''
@@ -71,6 +80,17 @@ names_in_current_scope = dir()
 
 '''
 
+# builtins
+dir(__builtins__)
+len([1, 2, 3, 4])
+chr(1)
+eval("1+1")             # evaluates a string expression
+id(5)                   # identity of an object guaranteed to be unique and constant
+open("myfile")
+range(10)
+sum(range(3))
+type(__builtins__)
+
 
 def my_func(x):
     y = x + 1
@@ -82,3 +102,29 @@ print dir(my_func)
 """
     Functional Programming
 """
+
+
+def my_upper(s):
+    return s.upper()
+
+mylist = ["maldojr88", "blahh"]
+
+# functions are in the builtin modules
+map(my_upper, mylist)
+filter(lambda x: (x % 2) == 0, range(10))
+
+"""
+    Classes
+"""
+# when a class gets defined, a class object gets created which is basically a dictionary with method names
+# as the keys and the function code to execute it as the values.
+
+# self is a pointer to the instance of the class
+
+
+"""
+    Generators
+
+        They have the unix pipes methodology of executing as things become available or when needed
+"""
+
