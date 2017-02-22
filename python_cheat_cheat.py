@@ -2,13 +2,19 @@
 Header
 """
 
+# PyCharm keys
+# F4 - jump to source
+# Command + F12 => view file structure (functions)
+
 # important modules
 import dis      # disassembler of python bytecode
 import sys      # functions and objects that interact closely with the interpreter
+import os       # operating system interface
 
 # remove unused modules warning
 sys
 dis
+os
 
 """
     Constants
@@ -18,6 +24,24 @@ False
 None
 __debug__
 Ellipsis
+
+"""
+    Data Structures
+"""
+
+# dictionary
+d = {"first": "meh", "second": [1, 2, 3]}
+d.keys()
+d.values()
+
+d["first"] = "abc"
+
+# iterate over keys and values
+for key, value in d.iteritems():
+    print key, value
+
+# strings printf syntax.
+print("%s" % d["first"])
 
 """
     Interpreter
@@ -112,6 +136,10 @@ mylist = ["maldojr88", "blahh"]
 # functions are in the builtin modules
 map(my_upper, mylist)
 filter(lambda x: (x % 2) == 0, range(10))
+
+# list comprehensions - a cleaner way to create lists
+# [ <expression> for <var> in <list> <conditional> ]
+squares = [x**2 for x in range(10) if x == 4]
 
 """
     Classes
