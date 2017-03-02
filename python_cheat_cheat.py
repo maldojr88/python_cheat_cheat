@@ -5,11 +5,17 @@ Header
 # PyCharm keys
 # F4 - jump to source
 # Command + F12 => view file structure (functions)
+# F1 - popup function definition
+# Shift + Esc => Hide Active Tool Window ( Debugger )
+# F12 ^^^^ to go back
 
 # important modules
 import dis      # disassembler of python bytecode
 import sys      # functions and objects that interact closely with the interpreter
 import os       # operating system interface
+
+# extended modules
+### TOD0 ####
 
 # remove unused modules warning
 sys
@@ -110,7 +116,12 @@ len([1, 2, 3, 4])
 chr(1)
 eval("1+1")             # evaluates a string expression
 id(5)                   # identity of an object guaranteed to be unique and constant
-open("myfile")
+
+try:
+    open("myfile")
+except IOError:
+    pass
+
 range(10)
 sum(range(3))
 type(__builtins__)
@@ -147,8 +158,29 @@ squares = [x**2 for x in range(10) if x == 4]
 # when a class gets defined, a class object gets created which is basically a dictionary with method names
 # as the keys and the function code to execute it as the values.
 
-# self is a pointer to the instance of the class
 
+class Car:
+    model = ""
+    speed = 30
+    price = 2000
+
+    def __init__(self, model, speed, price=50000):
+        self.model = model
+        self.speed = speed
+        self.price = price
+
+    def describe_me(self):
+        print "I'm a %s, I cost %i, and travel at %i MPH" % (self.model, self.price, self.speed)
+
+toyota = Car("Toyota", 60)
+toyota.describe_me()
+
+bmw = Car("BMW", 85, 90000)
+bmw.describe_me()
+
+# self is a pointer to the instance of the class
+print type(Car)
+print type(toyota)
 
 """
     Generators
